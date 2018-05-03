@@ -1,7 +1,7 @@
 import unittest
-import iris
 from iris import Iris
 import tensorflow as tf
+tf.enable_eager_execution()
 
 class IrisTest(tf.test.TestCase):
 
