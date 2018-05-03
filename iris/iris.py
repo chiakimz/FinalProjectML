@@ -51,9 +51,7 @@ class Iris:
             self.train_accuracy_results.append(epoch_accuracy.result())
 
             if epoch % 20 == 0:
-                print("Epoch {:03d}: Loss: {:.3f}, Accuracy: {:.3%}".format(epoch,
-                                                                epoch_loss_avg.result(),
-                                                                epoch_accuracy.result()))
+                self.__print_report(epoch, epoch_loss_avg.result(), epoch_accuracy.result())
 
         return self.train_loss_results, self.train_accuracy_results
 
@@ -72,3 +70,6 @@ class Iris:
         with tfe.GradientTape() as tape:
             loss_value = self.__loss(model, inputs, targets)
         return tape.gradient(loss_value, model.variables)
+
+    def __print_report(self, epoch, epoch_loss, epoch_accuracy):
+        print("Epoch {:03d}: Loss: {:.3f}, Accuracy: {:.3%}".format(epoch, epoch_loss, epoch_accuracy))
