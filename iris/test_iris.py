@@ -1,15 +1,21 @@
 import unittest
 import iris
 from iris import Iris
-import os.path
-#
-# def download_data():
-#     pass
+import tensorflow as tf
 
-class IrisTest(unittest.TestCase):
+class IrisTest(tf.test.TestCase):
 
     def test_download_function(self):
-        self.assertEqual(Iris.download_data()[-17:] ,'iris_training.csv')
+        filepath = Iris.download_data()[-17:]
+        self.assertAllEqual(filepath ,'iris_training.csv')
+
+    def test_format_data_features_is_tensor(self):
+        features, label = Iris.format_data()
+        self.assertTrue(isinstance(features[0], tf.Tensor))
+
+    def test_format_data_label_is_tensor(self):
+        features, label = Iris.format_data()
+        self.assertTrue(isinstance(label[0], tf.Tensor))
 
 if __name__ == '__main__':
-    unittest.main()
+    tf.test.main()
