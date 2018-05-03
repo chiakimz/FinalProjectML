@@ -6,14 +6,19 @@ Go into the folder of your choice. Eg:
 ```
 cd iris
 ```
-Then start the virtual environment:
+Start the virtual environment:
 ```
 source ./bin/activate
 ```
-Then download tensorflow:
+Download tensorflow:
 ```
 pip3 install --upgrade tensorflow
 ```
+Next we need to install matplotlib
+```
+python -mpip install -U matplotlib
+```
+
 
 Team members
 
