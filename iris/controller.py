@@ -11,4 +11,5 @@ tf.enable_eager_execution()
 from iris import Iris
 
 iris = Iris()
-iris.train()
+raefe = iris.train()
+iris.graph(raefe, 'graphs')
