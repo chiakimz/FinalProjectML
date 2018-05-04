@@ -1,5 +1,25 @@
 # Final Project
 
+## Getting started
+
+Go into the folder of your choice. Eg:
+```
+cd iris
+```
+Start the virtual environment:
+```
+source ./bin/activate
+```
+Download tensorflow:
+```
+pip3 install --upgrade tensorflow
+```
+Next we need to install matplotlib
+```
+python -mpip install -U matplotlib
+```
+
+
 Team members
 
 Agnes Donat  https://github.com/agnesdonat
