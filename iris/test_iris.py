@@ -39,6 +39,15 @@ class IrisTest(tf.test.TestCase):
         train_accuracy_results = self.iris.train()[1]
         self.assertAllEqual(len(train_accuracy_results), 201)
 
+    def test_predict(self):
+        self.iris.train()
+        predictions = self.iris.predict([
+            [5.1, 3.3, 1.7, 0.5],
+            [5.9, 3.0, 4.2, 1.5],
+            [6.9, 3.1, 5.4, 2.1]
+        ])
+        self.assertAllEqual(predictions, 'Example 0 prediction: Iris setosa\nExample 1 prediction: Iris versicolor\nExample 2 prediction: Iris virginica')
+
     def test_graph_creates_file(self):
         self.iris.graph([[3,2,4,5], [2,7,1,0]], 'test_graphs')
         my_file = Path('./test_graphs/figure.png')

@@ -16,6 +16,7 @@ class Iris:
         self.train_loss_results = []
         self.train_accuracy_results = []
         self.epoch_number = 201
+        self.class_ids = ["Iris setosa", "Iris versicolor", "Iris virginica"]
 
     def download_data(self):
         train_dataset_url = "http://download.tensorflow.org/data/iris_training.csv"
@@ -67,6 +68,19 @@ class Iris:
 
         print("Test set accuracy: {:.3%}".format(test_accuracy.result()))
         return "{:.3%}".format(test_accuracy.result())
+
+    def predict(self, data):
+        predict_dataset = tf.convert_to_tensor(data)
+
+        predictions = self.model(predict_dataset)
+        returned_predictions = []
+
+        for i, logits in enumerate(predictions):
+          class_idx = tf.argmax(logits).numpy()
+          name = self.class_ids[class_idx]
+          returned_predictions.append("Example {} prediction: {}".format(i, name))
+        print("\n".join(returned_predictions))
+        return "\n".join(returned_predictions)
 
     def __parse_csv(self, line):
         example_defaults = [[0.], [0.], [0.], [0.], [0]]
