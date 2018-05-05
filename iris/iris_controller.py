@@ -21,4 +21,4 @@ root = tfe.Checkpoint(optimizer=optimizer,
 
 root.restore(tf.train.latest_checkpoint(checkpoint_dir))
 
-iris.train()
+iris.test()

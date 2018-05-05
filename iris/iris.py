@@ -58,6 +58,16 @@ class Iris:
 
         return self.train_loss_results, self.train_accuracy_results
 
+    def test(self):
+        test_accuracy = tfe.metrics.Accuracy()
+
+        for (x, y) in tfe.Iterator(self.format_data(self.download_test_data())[2]):
+            prediction = tf.argmax(self.model(x), axis=1, output_type=tf.int32)
+            test_accuracy(prediction, y)
+
+        print("Test set accuracy: {:.3%}".format(test_accuracy.result()))
+        return "{:.3%}".format(test_accuracy.result())
+
     def __parse_csv(self, line):
         example_defaults = [[0.], [0.], [0.], [0.], [0]]
         parsed_line = tf.decode_csv(line, example_defaults)

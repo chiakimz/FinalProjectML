@@ -27,6 +27,10 @@ class IrisTest(tf.test.TestCase):
         features, label, dataset = self.iris.format_data(self.iris.download_data())
         self.assertTrue(isinstance(label[0], tf.Tensor))
 
+    def test_train_function_returns_accuracy(self):
+        test_accuracy_result = self.iris.test()
+        self.assertAllEqual(test_accuracy_result[-1:], '%')
+
     def test_train_function_adds_to_loss_array(self):
         train_loss_results = self.iris.train()[0]
         self.assertAllEqual(len(train_loss_results), 201)
