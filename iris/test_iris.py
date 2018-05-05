@@ -10,10 +10,6 @@ class IrisTest(tf.test.TestCase):
 
     def setUp(self):
         self.iris = Iris()
-        # self.test_dir = tempfile.mkdtemp()
-
-    # def tearDown(self):
-    #     shutil.rmtree(self.test_dir)
 
     def test_download_function(self):
         filepath = self.iris.download_data()[-17:]
