@@ -69,3 +69,19 @@ class Iris:
 
     def __print_report(self, epoch, epoch_loss, epoch_accuracy):
         print("Epoch {:03d}: Loss: {:.3f}, Accuracy: {:.3%}".format(epoch, epoch_loss, epoch_accuracy))
+
+    def graph(self, train_arg, image_folder_path):
+        fig, axes = plt.subplots(2, sharex=True, figsize=(12, 8))
+        fig.suptitle('Training Metrics')
+        self.__loss_plotter(train_arg[0], axes)
+        self.__accuracy_plotter(train_arg[1], axes)
+        plt.savefig(f'{image_folder_path}/figure.png')
+
+    def __loss_plotter(self, loss_results, axes):
+        axes[0].set_ylabel("Loss", fontsize=14)
+        axes[0].plot(loss_results)
+
+    def __accuracy_plotter(self, accuracy_results, axes):
+        axes[1].set_ylabel("Accuracy", fontsize=14)
+        axes[1].set_xlabel("Epoch", fontsize=14)
+        axes[1].plot(accuracy_results)

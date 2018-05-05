@@ -1,3 +1,6 @@
+import shutil, tempfile
+from os import path
+from pathlib import Path
 import unittest
 from iris import Iris
 import tensorflow as tf
@@ -28,6 +31,10 @@ class IrisTest(tf.test.TestCase):
         train_accuracy_results = self.iris.train()[1]
         self.assertAllEqual(len(train_accuracy_results), 201)
 
+    def test_graph_creates_file(self):
+        self.iris.graph([[3,2,4,5], [2,7,1,0]], 'test_graphs')
+        my_file = Path('./test_graphs/figure.png')
+        self.assertTrue(my_file.is_file())
 
 
 if __name__ == '__main__':

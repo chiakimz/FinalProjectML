@@ -11,7 +11,8 @@ tf.enable_eager_execution()
 from iris import Iris
 
 iris = Iris()
-iris.train()
+trained_iris = iris.train()
+iris.graph(trained_iris, 'graphs')
 model = iris.model
 optimizer = tf.train.AdamOptimizer(learning_rate=0.001)
 checkpoint_dir = './iris_model'
