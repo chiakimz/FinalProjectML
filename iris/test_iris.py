@@ -15,12 +15,16 @@ class IrisTest(tf.test.TestCase):
         filepath = self.iris.download_data()[-17:]
         self.assertAllEqual(filepath ,'iris_training.csv')
 
+    def test_download_function(self):
+        filepath = self.iris.download_test_data()[-13:]
+        self.assertAllEqual(filepath ,'iris_test.csv')
+
     def test_format_data_features_is_tensor(self):
-        features, label, dataset = self.iris.format_data()
+        features, label, dataset = self.iris.format_data(self.iris.download_data())
         self.assertTrue(isinstance(features[0], tf.Tensor))
 
     def test_format_data_label_is_tensor(self):
-        features, label, dataset = self.iris.format_data()
+        features, label, dataset = self.iris.format_data(self.iris.download_data())
         self.assertTrue(isinstance(label[0], tf.Tensor))
 
     def test_train_function_adds_to_loss_array(self):

@@ -23,8 +23,15 @@ class Iris:
                                            origin=train_dataset_url)
         return train_dataset_fp
 
-    def format_data(self):
-        train_dataset = tf.data.TextLineDataset(self.download_data())
+    def download_test_data(self):
+        test_url = "http://download.tensorflow.org/data/iris_test.csv"
+
+        test_fp = tf.keras.utils.get_file(fname=os.path.basename(test_url),
+                                  origin=test_url)
+        return test_fp
+
+    def format_data(self, data_filepath):
+        train_dataset = tf.data.TextLineDataset(data_filepath)
         train_dataset = train_dataset.skip(1)
         train_dataset = train_dataset.map(self.__parse_csv)
         train_dataset = train_dataset.shuffle(buffer_size=1000)
@@ -37,7 +44,7 @@ class Iris:
             epoch_loss_avg = tfe.metrics.Mean()
             epoch_accuracy = tfe.metrics.Accuracy()
 
-            for x, y in tfe.Iterator(self.format_data()[2]):
+            for x, y in tfe.Iterator(self.format_data(self.download_data())[2]):
                 grads = self.__grad(self.model, x, y)
                 self.optimizer.apply_gradients(zip(grads, self.model.variables),
                                                global_step=tf.train.get_or_create_global_step())
