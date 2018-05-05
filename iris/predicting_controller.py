@@ -21,4 +21,12 @@ root = tfe.Checkpoint(optimizer=optimizer,
 
 root.restore(tf.train.latest_checkpoint(checkpoint_dir))
 
-iris.train()
+data_array = []
+while True:
+    data = (input("Please enter features to predict (type 'exit' to stop):\n"))
+    if data == 'exit':
+        break
+    data = data.split(",")
+    data_array.append([float(i) for i in data])
+if len(data_array) > 0:
+    iris.predict(data_array)
