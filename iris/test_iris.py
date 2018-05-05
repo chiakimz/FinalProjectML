@@ -46,7 +46,7 @@ class IrisTest(tf.test.TestCase):
             [5.9, 3.0, 4.2, 1.5],
             [6.9, 3.1, 5.4, 2.1]
         ])
-        self.assertAllEqual(predictions, 'Example 0 prediction: Iris setosa\nExample 1 prediction: Iris versicolor\nExample 2 prediction: Iris virginica')
+        self.assertAllEqual(predictions, 'Example 1 prediction: Iris setosa\nExample 2 prediction: Iris versicolor\nExample 3 prediction: Iris virginica')
 
     def test_graph_creates_file(self):
         self.iris.graph([[3,2,4,5], [2,7,1,0]], 'test_graphs')

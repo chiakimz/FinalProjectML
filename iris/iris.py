@@ -78,7 +78,7 @@ class Iris:
         for i, logits in enumerate(predictions):
           class_idx = tf.argmax(logits).numpy()
           name = self.class_ids[class_idx]
-          returned_predictions.append("Example {} prediction: {}".format(i, name))
+          returned_predictions.append("Example {} prediction: {}".format(i+1, name))
         print("\n".join(returned_predictions))
         return "\n".join(returned_predictions)
 
