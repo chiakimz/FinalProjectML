@@ -5,19 +5,24 @@ Aristotle
 
 ## Introduction
 
-We are four novice software developers who have been teamed up based on their interest in studying Machine Learning. Our final project, delivered in just 9 days, is a website, documenting our journey from knowing little to nothing about Machine Learning to being able to train a bot that evaluates numbers to numbers type of data sets. We are all passionate about test driven development and well-crafted code, as well as following best practices of the SOLID principles taught at Makers Academy. Please take a look at how we used a classic supervised learning example to categorise Iris flowers by species then developed this boilerplate to train our bot to make predictions on different data sets.
+We are four novice software developers who have been teamed up based on their interest in studying Machine Learning. Our final project, delivered in just 9 days, is a website, documenting our journey from knowing little to nothing about Machine Learning to being able to train a bot that evaluates numbers to numbers type of data sets. We are all passionate about Test Driven Development and well-crafted code, as well as following best practices of the SOLID principles taught at Makers Academy. Please take a look at how we used a classic Supervised Learning example to categorise Iris flowers by species then developed this boilerplate to train our bot to make predictions on different data sets.
 
 ## Tech Stack
 
-#### Backend/Frontend
+#### Backend
 
 * Python
 * TensorFlow
-* ReactJS
+
+
+#### Frontend
+ * ReactJS
+ * HTML
+ * CSS
 
 #### Testing
 
-* unittest
+* unittest with TensorFlow's testing library
 
 #### Deployment
 
@@ -58,16 +63,18 @@ python test_iris.py
 ## Process
 ### Week 1
 
-  <strong>Monday:</strong> Started individual research on Machine Learning. We set up two Trello boards: one for sharing useful links to articles and videos and one for task delegation.<br>
+  <strong>Monday:</strong> Started individual research on Machine Learning. We set up two Trello boards: one for sharing useful links to articles and videos and one for task delegation. Raefe also summarised ML concepts in a handy diagram: <br>
 
-  <strong>Tuesday:</strong> In the morning, we reviewed each others' FizzBuzz code written in Python, tested with Pytest and continued with more research. Later, we made a decision that instead of training a deep learning car with Reinforcement Learning, we would focus on our journey of learning about Machine Learning.<br>
+  ![Raefe's diagram for ML](./iris/public/ml_diagram.png "Raefe's diagram on ML")  
 
-  <strong>Wednesday:</strong> Working in pairs, we worked our way through TensorFlow's Eager Execution tutorial of categorising Iris flowers by species to have a better understanding of its syntax and how a simple supervised learning project builds up.<br>
+  <strong>Tuesday:</strong> In the morning, we reviewed each others' FizzBuzz code written in Python, tested with Pytest, and continued with more research. Later, we made a decision that instead of training a deep learning car with Reinforcement Learning, we would focus on our journey of learning about Machine Learning.<br>
 
-  <strong>Thursday:</strong> Swapping pairs, we looked into testing the code we studied the previous day and finding a solution for serialising our Python object so we can save our trained bot. We were experimenting Python's pickle module but eventually we dropped this idea and used TensorFlow's Saver class. <br>
+  <strong>Wednesday:</strong> Working in pairs, we read through TensorFlow's Eager Execution tutorial of categorising Iris flowers by species to have a better understanding of its syntax and how a simple supervised learning project builds up.<br>
+
+  <strong>Thursday:</strong> Swapping pairs, we looked into testing the code we studied the previous day and finding a solution for serialising our Python object so we can save our trained bot. In order to tame the unstructured TensorFlow code, it had to be broken down into smaller, testable chunks. Using unittest with TensorFlow's testing library the production code became neatly organised with an Iris class and several methods each following the SRP. We were also experimenting with Python's pickle module, but eventually, we dropped this idea and used TensorFlow's Saver class. <br>
 
   <strong>Friday:</strong> Chiaki and George were working on saving and restoring the trained bot, while Raefe and Agnes were testing for the program printing graphs for Loss and Accuracy.
 
-  By the end of the week, we had a basic understanding of Machine Learning concepts, and a fully tested and trained Model for categorising Iris flowers that also returned its loss and accuracy results in graphs.
+  By the end of the week, we had a basic understanding of Machine Learning concepts, and a fully tested and trained Model for categorising Iris flowers that also returned its Loss and Accuracy results in graphs.
 
   ![Alt text](./iris/public/graphs.png)
