@@ -1,3 +1,6 @@
 lib/python3.6/site-packages/tensorflow
 __pycache__
 iris_model
+creditcard.csv
+fraud_graphs/figure.png
+iris_graphs/figure.png
