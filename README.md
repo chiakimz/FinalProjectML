@@ -14,10 +14,6 @@ Download tensorflow:
 ```
 pip3 install --upgrade tensorflow
 ```
-Next we need to install matplotlib
-```
-python -mpip install -U matplotlib
-```
 
 
 Team members

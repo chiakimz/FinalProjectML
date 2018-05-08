@@ -12,7 +12,7 @@ from iris import Iris
 
 iris = Iris()
 trained_iris = iris.train()
-iris.graph(trained_iris, 'graphs')
+iris.graph(trained_iris, 'iris_graphs')
 model = iris.model
 optimizer = tf.train.AdamOptimizer(learning_rate=0.001)
 checkpoint_dir = './iris_model'
