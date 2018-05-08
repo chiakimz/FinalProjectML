@@ -49,7 +49,7 @@ class IrisTest(tf.test.TestCase):
         self.assertAllEqual(predictions, 'Example 1 prediction: Iris setosa\nExample 2 prediction: Iris versicolor\nExample 3 prediction: Iris virginica')
 
     def test_graph_creates_file(self):
-        self.iris.graph([[3,2,4,5], [2,7,1,0]], 'test_graphs')
+        self.iris.graph([[3,2,4,5], [2,7,1,0]], 'test_iris_graphs')
         my_file = Path('./test_graphs/figure.png')
         self.assertTrue(my_file.is_file())
 

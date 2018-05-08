@@ -4,38 +4,30 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import tensorflow.contrib.eager as tfe
 
-class Iris:
+class Fraud:
 
     def __init__(self):
         self.model = tf.keras.Sequential([
-            tf.keras.layers.Dense(10, activation="relu", input_shape=(4,)),
+            tf.keras.layers.Dense(10, activation="relu", input_shape=(30,)),
             tf.keras.layers.Dense(10, activation="relu"),
-            tf.keras.layers.Dense(3)
+            tf.keras.layers.Dense(2)
         ])
         self.optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.01)
         self.train_loss_results = []
         self.train_accuracy_results = []
-        self.epoch_number = 201
-        self.class_ids = ["Iris setosa", "Iris versicolor", "Iris virginica"]
+        self.epoch_number = 8
+        self.class_ids = ["Non-Fraudulent", "Fraudulent"]
 
     def download_data(self):
-        train_dataset_url = "http://download.tensorflow.org/data/iris_training.csv"
-        train_dataset_fp = tf.keras.utils.get_file(fname=os.path.basename(train_dataset_url),
-                                           origin=train_dataset_url)
+        train_dataset_fp = 'creditcard.csv'
         return train_dataset_fp
-
-    def download_test_data(self):
-        test_url = "http://download.tensorflow.org/data/iris_test.csv"
-        test_fp = tf.keras.utils.get_file(fname=os.path.basename(test_url),
-                                  origin=test_url)
-        return test_fp
 
     def format_data(self, data_filepath):
         train_dataset = tf.data.TextLineDataset(data_filepath)
         train_dataset = train_dataset.skip(1)
         train_dataset = train_dataset.map(self.__parse_csv)
-        train_dataset = train_dataset.shuffle(buffer_size=1000)
-        train_dataset = train_dataset.batch(32)
+        train_dataset = train_dataset.shuffle(buffer_size=500000)
+        train_dataset = train_dataset.batch(200)
         features, label = tfe.Iterator(train_dataset).next()
         return features, label, train_dataset
 
@@ -53,7 +45,7 @@ class Iris:
             self.train_loss_results.append(epoch_loss_avg.result())
             self.train_accuracy_results.append(epoch_accuracy.result())
 
-            if epoch % 20 == 0:
+            if epoch % 1 == 0:
                 self.__print_report(epoch, epoch_loss_avg.result(), epoch_accuracy.result())
 
         return self.train_loss_results, self.train_accuracy_results
@@ -82,9 +74,16 @@ class Iris:
         return "\n".join(returned_predictions)
 
     def __parse_csv(self, line):
-        example_defaults = [[0.], [0.], [0.], [0.], [0]]
+        example_defaults = [
+            [0.], [0.], [0.], [0.], [0.], [0.],
+            [0.], [0.], [0.], [0.], [0.], [0.],
+            [0.], [0.], [0.], [0.], [0.], [0.],
+            [0.], [0.], [0.], [0.], [0.], [0.],
+            [0.], [0.], [0.], [0.], [0.], [0.],
+            [0]
+        ]
         parsed_line = tf.decode_csv(line, example_defaults)
-        features = tf.reshape(parsed_line[:-1], shape=(4,))
+        features = tf.reshape(parsed_line[:-1], shape=(30,))
         label = tf.reshape(parsed_line[-1], shape=())
         return features, label
 
