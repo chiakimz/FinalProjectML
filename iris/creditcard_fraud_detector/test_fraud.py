@@ -18,17 +18,11 @@ class IrisTest(tf.test.TestCase):
     def test_format_data_features_is_tensor(self):
         features, label, dataset = self.fraud.format_data(self.fraud.download_data())
         self.assertTrue(isinstance(features[0], tf.Tensor))
-
-    def test_format_data_label_is_tensor(self):
-        features, label, dataset = self.fraud.format_data(self.fraud.download_data())
         self.assertTrue(isinstance(label[0], tf.Tensor))
 
     def test_train_function_adds_to_loss_array(self):
-        train_loss_results = self.fraud.train()[0]
+        train_loss_results, train_accuracy_result = self.fraud.train()
         self.assertAllEqual(len(train_loss_results), 201)
-
-    def test_train_function_adds_to_accuracy_array(self):
-        train_accuracy_results = self.fraud.train()[1]
         self.assertAllEqual(len(train_accuracy_results), 201)
 
     def test_graph_creates_file(self):
