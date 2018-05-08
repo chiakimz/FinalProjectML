@@ -39,8 +39,8 @@ class IrisTest(tf.test.TestCase):
         self.assertTrue(predictions in possible_answers)
 
     def test_graph_creates_file(self):
-        self.iris.graph([[3,2,4,5], [2,7,1,0]], 'test_iris_graphs')
-        my_file = Path('./test_iris_graphs/figure.png')
+        self.iris.graph([[3,2,4,5], [2,7,1,0]], 'test_graphs')
+        my_file = Path('./test_graphs/figure.png')
         self.assertTrue(my_file.is_file())
 
 
