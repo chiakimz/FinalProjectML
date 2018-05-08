@@ -6,8 +6,8 @@ constructor(props) {
     this.state = {
       projects: [
         {id: 1, name: 'Iris', brand: 'Supervised Learning'},
-        {id: 2, name: 'Something', brand: 'Supervised Learning'},
-        {id: 3, name: 'Something', brand: 'Supervised Learning'},
+        {id: 2, name: 'Fraud', brand: 'Supervised Learning'},
+        {id: 3, name: 'Diabetes', brand: 'Supervised Learning'},
       ]
     }
   }
