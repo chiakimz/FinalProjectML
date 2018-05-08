@@ -1,4 +1,5 @@
 lib/python3.6/site-packages/tensorflow
+lib/python3.6/site-packages/tensorflow-1.8.0.dist-info
 __pycache__
 iris_model
 creditcard.csv
