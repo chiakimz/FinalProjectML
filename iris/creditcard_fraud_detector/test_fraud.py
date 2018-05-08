@@ -1,4 +1,3 @@
-import shutil, tempfile
 from os import path
 from pathlib import Path
 import unittest
@@ -21,13 +20,13 @@ class IrisTest(tf.test.TestCase):
         self.assertTrue(isinstance(label[0], tf.Tensor))
 
     def test_train_function_adds_to_loss_array(self):
-        train_loss_results, train_accuracy_result = self.fraud.train()
-        self.assertAllEqual(len(train_loss_results), 201)
-        self.assertAllEqual(len(train_accuracy_results), 201)
+        train_loss_results, train_accuracy_results = self.fraud.train()
+        self.assertAllEqual(len(train_loss_results), 8)
+        self.assertAllEqual(len(train_accuracy_results), 8)
 
     def test_graph_creates_file(self):
         self.fraud.graph([[3,2,4,5], [2,7,1,0]], 'test_fraud_graphs')
-        my_file = Path('./test_graphs/figure.png')
+        my_file = Path('./test_fraud_graphs/figure.png')
         self.assertTrue(my_file.is_file())
 
 if __name__ == '__main__':
