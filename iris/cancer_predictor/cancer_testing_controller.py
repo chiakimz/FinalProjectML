@@ -8,12 +8,12 @@ import tensorflow.contrib.eager as tfe
 
 tf.enable_eager_execution()
 
-from iris import Iris
+from cancer import Cancer
 
-iris = Iris()
-model = iris.model
+cancer = Cancer()
+model = cancer.model
 optimizer = tf.train.AdamOptimizer(learning_rate=0.001)
-checkpoint_dir = './iris_model'
+checkpoint_dir = './cancer_model'
 checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt")
 root = tfe.Checkpoint(optimizer=optimizer,
                       model=model,
@@ -21,4 +21,4 @@ root = tfe.Checkpoint(optimizer=optimizer,
 
 root.restore(tf.train.latest_checkpoint(checkpoint_dir))
 
-iris.test()
+cancer.test()

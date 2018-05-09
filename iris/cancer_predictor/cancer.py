@@ -12,22 +12,26 @@ class Cancer:
             tf.keras.layers.Dense(16, activation="relu"),
             tf.keras.layers.Dense(2)
         ])
-        self.optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.01)
+        self.optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.001)
         self.train_loss_results = []
         self.train_accuracy_results = []
         self.epoch_number = 400
         self.class_ids = ["Benign", "Malignant"]
 
     def download_data(self):
-        train_dataset_fp = 'cancer.csv'
+        train_dataset_fp = 'cancer-training.csv'
+        return train_dataset_fp
+
+    def download_test_data(self):
+        train_dataset_fp = 'cancer-testing.csv'
         return train_dataset_fp
 
     def format_data(self, data_filepath):
         train_dataset = tf.data.TextLineDataset(data_filepath)
         train_dataset = train_dataset.skip(1)
         train_dataset = train_dataset.map(self.__parse_csv)
-        train_dataset = train_dataset.shuffle(buffer_size=50000)
-        train_dataset = train_dataset.batch(400)
+        train_dataset = train_dataset.shuffle(buffer_size=5000)
+        train_dataset = train_dataset.batch(150)
         features, label = tfe.Iterator(train_dataset).next()
         return features, label, train_dataset
 
@@ -59,19 +63,6 @@ class Cancer:
 
         print("Test set accuracy: {:.3%}".format(test_accuracy.result()))
         return "{:.3%}".format(test_accuracy.result())
-
-    def predict(self, data):
-        predict_dataset = tf.convert_to_tensor(data)
-
-        predictions = self.model(predict_dataset)
-        returned_predictions = []
-
-        for i, logits in enumerate(predictions):
-          class_idx = tf.argmax(logits).numpy()
-          name = self.class_ids[class_idx]
-          returned_predictions.append("Example {} prediction: {}".format(i+1, name))
-        print("\n".join(returned_predictions))
-        return "\n".join(returned_predictions)
 
     def __parse_csv(self, line):
         example_defaults = [
