@@ -25,8 +25,8 @@ class IrisTest(tf.test.TestCase):
         self.assertAllEqual(len(train_accuracy_results), 8)
 
     def test_graph_creates_file(self):
-        self.fraud.graph([[3,2,4,5], [2,7,1,0]], 'test_fraud_graphs')
-        my_file = Path('./test_fraud_graphs/figure.png')
+        self.fraud.graph([[3,2,4,5], [2,7,1,0]], 'test_graphs')
+        my_file = Path('./test_graphs/figure.png')
         self.assertTrue(my_file.is_file())
 
 if __name__ == '__main__':

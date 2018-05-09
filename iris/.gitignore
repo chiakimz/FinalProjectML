@@ -2,10 +2,3 @@ lib/python3.6/site-packages/tensorflow
 lib/python3.6/site-packages/tensorflow-1.8.0.dist-info
 __pycache__
 creditcard.csv
-iris_flower_categoriser/iris_model
-iris_flower_categoriser/iris_graphs/figure.png
-iris_flower_categoriser/test_iris_graphs/figure.png
-
-creditcard_fraud_detector/fraud_model
-creditcard_fraud_detector/fraud_graphs/figure.png
-creditcard_fraud_detector/test_fraud_graphs/figure.png
