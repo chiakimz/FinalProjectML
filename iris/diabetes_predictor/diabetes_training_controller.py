@@ -14,7 +14,7 @@ diabetes = Diabetes()
 trained_diabetes = diabetes.train()
 diabetes.graph(trained_diabetes, 'diabetes_graphs')
 model = diabetes.model
-optimizer = tf.train.AdamOptimizer(learning_rate=0.001)
+optimizer = tf.train.AdamOptimizer(learning_rate=0.01)
 checkpoint_dir = './diabetes_model'
 checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt")
 root = tfe.Checkpoint(optimizer=optimizer,
