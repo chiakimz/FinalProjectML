@@ -26,12 +26,3 @@ with summary_writer.as_default(), tf.contrib.summary.always_record_summaries():
                         optimizer_step=tf.train.get_or_create_global_step())
   root.save(file_prefix=checkpoint_prefix)
   tf.contrib.summary.scalar("loss", my_loss)
-  # In this case every call to tf.contrib.summary.scalar will generate a record
-  # ...
-
-
-# sess = tf.Session()
-# train_writer = tf.contrib.summary('/iris_flower_categoriser/iris_model/', sess.graph)
-# merge = tf.summary.merge_all()
-# summary, batch_loss, new_state, _ = sess.run([merge, model.loss, model.final_state, model.optimizer],feed_dict=feed)
-# train_writer.add_summary(summary, counter)
