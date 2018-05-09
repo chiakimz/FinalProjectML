@@ -51,6 +51,18 @@ Go to the folder of your choice then run the training file, e.g.:
 ```
 python iris_training_controller.py
 ```
+
+## To run Tensorboard
+
+Go to the folder of the dataset you want to observe, e.g.: 'iris_flower_categoriser' or 'diabetes_predictor'
+
+and run 
+```
+tensorboard --logdir='.'
+```
+
+and go to localhost:6006 on your browser!
+
 ## Process
 ### Week 1
 
