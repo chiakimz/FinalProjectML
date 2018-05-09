@@ -1,0 +1,3 @@
+[run]
+include =
+    */cancer_predictor/cancer.py
