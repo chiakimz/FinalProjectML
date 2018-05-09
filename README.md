@@ -4,7 +4,7 @@
 
 ## Introduction
 
-We are four software developers doing a project in Machine Learning. Our final project, delivered in just 7 days, is a series of bots trained with supervised learning that can predict events such as fraudulent transactions and tumour prediction. We are all passionate about Test Driven Development and well-crafted code, as well as following best practices of the SOLID principles taught at Makers Academy.
+We are four software developers doing a project in Machine Learning. Our final project, delivered in just 7 days, is a series of bots trained with supervised learning that can predict if someone has diabetes or if a tumour is benign or malignant. We are all passionate about Test Driven Development and well-crafted code, as well as following best practices of the SOLID principles taught at Makers Academy.
 
 ## Tech Stack
 
@@ -44,7 +44,20 @@ Go to the folder of your choice then run the test file, e.g.:
 python test_iris.py
 ```
 ## Test coverage
-First you will need to install the coverage library
+
+First you will need to install the coverage library:
+```
+pip install coverage
+```
+Then, run this command with the test you want to get coverage on. Eg:
+```
+coverage run test_iris.py
+```
+To see the coverage for that test, run:
+```
+coverage report
+```
+
 ## Training the bot
 
 Go to the folder of your choice then run the training file, e.g.:
