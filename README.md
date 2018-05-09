@@ -1,7 +1,6 @@
 # Final Project
 [Agnes Donat](https://github.com/agnesdonat) || [Chiaki Mizuta](https://github.com/chiakimz) || [George Drayson](https://github.com/GeorgeDrayson) || [Raefe Newton-Jones](https://github.com/Raefey)
-> For the things we have to learn before we can do them, we learn by doing them.<br>
-Aristotle
+> "For the things we have to learn before we can do them, we learn by doing them" - Aristotle
 
 ## Introduction
 
