@@ -22,3 +22,12 @@ root = tfe.Checkpoint(optimizer=optimizer,
 root.restore(tf.train.latest_checkpoint(checkpoint_dir))
 
 iris.test()
+
+model = iris.model
+optimizer = tf.train.AdamOptimizer(learning_rate=0.001)
+checkpoint_dir = './iris_model'
+checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt")
+root = tfe.Checkpoint(optimizer=optimizer,
+                      model=model,
+                      optimizer_step=tf.train.get_or_create_global_step())
+root.save(file_prefix=checkpoint_prefix)

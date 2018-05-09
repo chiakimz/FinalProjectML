@@ -8,12 +8,12 @@ import tensorflow.contrib.eager as tfe
 
 tf.enable_eager_execution()
 
-from iris import Iris
+from diabetes import Diabetes
 
-iris = Iris()
-model = iris.model
+diabetes = Diabetes()
+model = diabetes.model
 optimizer = tf.train.AdamOptimizer(learning_rate=0.001)
-checkpoint_dir = './iris_model'
+checkpoint_dir = './diabetes_model'
 checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt")
 root = tfe.Checkpoint(optimizer=optimizer,
                       model=model,
@@ -29,4 +29,4 @@ while True:
     data = data.split(",")
     data_array.append([float(i) for i in data])
 if len(data_array) > 0:
-    iris.predict(data_array)
+    diabetes.predict(data_array)
