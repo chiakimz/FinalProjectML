@@ -2,3 +2,12 @@ lib/python3.6/site-packages/tensorflow
 lib/python3.6/site-packages/tensorflow-1.8.0.dist-info
 __pycache__
 creditcard.csv
+
+iris_flower_categoriser/iris_model
+iris_flower_categoriser/iris_graphs
+
+diabetes_predictor/diabetes_model
+diabetes_predictor/diabetes_graphs
+
+cancer_predictor/cancer_model
+cancer_predictor/cancer_graphs
