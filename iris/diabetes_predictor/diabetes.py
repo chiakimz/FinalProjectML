@@ -16,7 +16,7 @@ class Diabetes:
         self.optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.01)
         self.train_loss_results = []
         self.train_accuracy_results = []
-        self.epoch_number = 500
+        self.epoch_number = 100
         self.class_ids = ["Non-diabetic", "Diabetic"]
 
     def download_data(self):
@@ -54,17 +54,6 @@ class Diabetes:
                 self.__print_report(epoch, epoch_loss_avg.result(), epoch_accuracy.result())
 
         return self.train_loss_results, self.train_accuracy_results
-
-    def test(self):
-        test_accuracy = tfe.metrics.Accuracy()
-
-        for (x, y) in tfe.Iterator(self.format_data(self.download_test_data())[2]):
-            prediction = tf.argmax(self.model(x), axis=1, output_type=tf.int32)
-            test_accuracy(prediction, y)
-
-        print("Test set accuracy: {:.3%}".format(test_accuracy.result()))
-        return "{:.3%}".format(test_accuracy.result())
-
 
     def test(self):
         test_accuracy = tfe.metrics.Accuracy()

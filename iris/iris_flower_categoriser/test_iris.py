@@ -14,7 +14,7 @@ class IrisTest(tf.test.TestCase):
         filepath = self.iris.download_data()[-17:]
         self.assertAllEqual(filepath ,'iris_training.csv')
 
-    def test_download_function(self):
+    def test_download_test_data_function(self):
         filepath = self.iris.download_test_data()[-13:]
         self.assertAllEqual(filepath ,'iris_test.csv')
 
