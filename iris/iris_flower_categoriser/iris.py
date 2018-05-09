@@ -3,6 +3,8 @@ import os
 import matplotlib.pyplot as plt
 import tensorflow as tf
 import tensorflow.contrib.eager as tfe
+from tensorflow.contrib.summary import summary
+
 
 class Iris:
 
@@ -104,10 +106,11 @@ class Iris:
         fig, axes = plt.subplots(2, sharex=True, figsize=(12, 8))
         fig.suptitle('Training Metrics')
         self.__loss_plotter(train_arg[0], axes)
-        tf.summary.histogram("Loss results", train_arg[0])
+        # tf.summary.histogram("Loss results", train_arg[0])
         self.__accuracy_plotter(train_arg[1], axes)
-        tf.summary.histogram("Accuracy results", train_arg[1])
+        # tf.summary.histogram("Accuracy results", train_arg[1])
         plt.savefig(f'{image_folder_path}/figure.png')
+
 
     def __loss_plotter(self, loss_results, axes):
         axes[0].set_ylabel("Loss", fontsize=14)
