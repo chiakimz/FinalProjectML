@@ -5,24 +5,21 @@ Aristotle
 
 ## Introduction
 
-We are four software developers who have been teamed up based on our interest in Machine Learning. Our final project, delivered in just 9 days, is a series of bots trained with supervised learning that can predict events ranging from fraudulent transactions to types of Iris flowers to the likelihood of a tumour being malignant or benign. We are all passionate about Test Driven Development and well-crafted code, as well as following best practices of the SOLID principles taught at Makers Academy.
+We are four software developers doing a project in Machine Learning. Our final project, delivered in just 7 days, is a series of bots trained with supervised learning that can predict events such as fraudulent transactions and tumour prediction. We are all passionate about Test Driven Development and well-crafted code, as well as following best practices of the SOLID principles taught at Makers Academy.
 
 ## Tech Stack
 
-#### Backend
-
+#### Written in
 * Python
-* TensorFlow
 
-#### Frontend
- * TensorBoard
+#### Displayed with
+* TensorBoard
 
 #### Testing
-
 * unittest with TensorFlow's testing library
 
 #### Libraries
-
+* TensorFlow
 * Matplotlib
 
 ## Getting started
@@ -41,15 +38,17 @@ We are four software developers who have been teamed up based on our interest in
   pip3 install --upgrade tensorflow
   ```
 
-## Running backend tests
+## Unit tests
 
-1. cd to the folder of your choice then run the test file, e.g.:
+Go to the folder of your choice then run the test file, e.g.:
 ```
 python test_iris.py
 ```
+## Test coverage
+First you will need to install the coverage library
 ## Training the bot
 
-1. cd to the folder of your choice then run the training file, e.g.:
+Go to the folder of your choice then run the training file, e.g.:
 ```
 python iris_training_controller.py
 ```
@@ -71,3 +70,10 @@ python iris_training_controller.py
  By the end of the week, we had a basic understanding of Machine Learning concepts, and a fully tested and trained Model for categorising Iris flowers that also returned its Loss and Accuracy results in graphs.
 
   ![Alt text](./iris/public/graphs.png)
+  
+### Week 2
+
+<strong>Tuesday:</strong> Raefe worked on coverage and file structure, Chiaki researched possible frontend options such as React and eventually decided on Tensorboard. Meanwhile, George and Agnes added bots for diabetes, breast cancer and card fraud<br>
+
+<strong>Wednesday:</strong> Working in pairs, Chiaki and Agnes connected our models to Tensorboard, which allowed us to display data about our training and testing. At the same time, Raefe and George worked on increasing the accuracy of the bots, updating the README and improving the coverage.
+
