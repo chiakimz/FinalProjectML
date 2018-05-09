@@ -1,5 +1,0 @@
-[run]
-omit =
-    */lib/*
-    */creditcard_fraud_detector/test_fraud.py
-    */iris_flower_categoriser/test_iris.py
