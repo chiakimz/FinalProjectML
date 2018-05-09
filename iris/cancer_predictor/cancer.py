@@ -64,7 +64,7 @@ class Cancer:
         print("Test set accuracy: {:.3%}".format(test_accuracy.result()))
         return "{:.3%}".format(test_accuracy.result())
 
-def predict(self, data):
+    def predict(self, data):
         predict_dataset = tf.convert_to_tensor(data)
 
         predictions = self.model(predict_dataset)
@@ -73,7 +73,7 @@ def predict(self, data):
         for i, logits in enumerate(predictions):
           class_idx = tf.argmax(logits).numpy()
           name = self.class_ids[class_idx]
-          returned_predictions.append("Example {} prediction: {}".format(i1, name))
+          returned_predictions.append("Example {} prediction: {}".format(i+1, name))
         print("\n".join(returned_predictions))
         return "\n".join(returned_predictions)
 
