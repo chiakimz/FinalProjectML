@@ -1,0 +1,3 @@
+[run]
+include =
+    */iris_flower_categoriser/iris.py
