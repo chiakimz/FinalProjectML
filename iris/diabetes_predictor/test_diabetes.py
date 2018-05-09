@@ -24,6 +24,10 @@ class DiabetesTest(tf.test.TestCase):
         self.assertAllEqual(len(train_loss_results), 500)
         self.assertAllEqual(len(train_accuracy_results), 500)
 
+    def test_test_function_returns_accuracy(self):
+        test_accuracy_result = self.diabetes.test()
+        self.assertAllEqual(test_accuracy_result[-1:], '%')
+
     def test_graph_creates_file(self):
         self.diabetes.graph([[3,2,4,5], [2,7,1,0]], 'test_diabetes_graphs')
         my_file = Path('./test_diabetes_graphs/figure.png')

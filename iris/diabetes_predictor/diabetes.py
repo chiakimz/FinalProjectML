@@ -8,9 +8,9 @@ class Diabetes:
 
     def __init__(self):
         self.model = tf.keras.Sequential([
-            tf.keras.layers.Dense(10, activation="relu", input_shape=(8,)),
-            tf.keras.layers.Dense(10, activation="relu"),
-            tf.keras.layers.Dense(10, activation="relu"),
+            tf.keras.layers.Dense(20, activation="relu", input_shape=(8,)),
+            tf.keras.layers.Dense(20, activation="relu"),
+            tf.keras.layers.Dense(20, activation="relu"),
             tf.keras.layers.Dense(2)
         ])
         self.optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.01)
@@ -20,7 +20,11 @@ class Diabetes:
         self.class_ids = ["Non-diabetic", "Diabetic"]
 
     def download_data(self):
-        train_dataset_fp = 'diabetes.csv'
+        train_dataset_fp = 'diabetes-training.csv'
+        return train_dataset_fp
+
+    def download_test_data(self):
+        train_dataset_fp = 'diabetes-testing.csv'
         return train_dataset_fp
 
     def format_data(self, data_filepath):
@@ -50,6 +54,17 @@ class Diabetes:
                 self.__print_report(epoch, epoch_loss_avg.result(), epoch_accuracy.result())
 
         return self.train_loss_results, self.train_accuracy_results
+
+    def test(self):
+        test_accuracy = tfe.metrics.Accuracy()
+
+        for (x, y) in tfe.Iterator(self.format_data(self.download_test_data())[2]):
+            prediction = tf.argmax(self.model(x), axis=1, output_type=tf.int32)
+            test_accuracy(prediction, y)
+
+        print("Test set accuracy: {:.3%}".format(test_accuracy.result()))
+        return "{:.3%}".format(test_accuracy.result())
+
 
     def test(self):
         test_accuracy = tfe.metrics.Accuracy()
