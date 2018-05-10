@@ -8,7 +8,7 @@ import tensorflow.contrib.eager as tfe
 
 tf.enable_eager_execution()
 
-from cancer import cancer
+from cancer import Cancer
 
 cancer = Cancer()
 model = cancer.model
